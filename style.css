@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
+.hoverable:hover path {
+  fill: #ff0000; /* Change this to the desired color on hover */
+  transition: fill 0.3s; /* Optional: Add a smooth transition effect */
+}
+/* Add this to your CSS to define the initial state and the transition */
+.modal {
+  /* Initial state */
+  right: -39rem;
+
+  /* Transition for the "right" property */
+  transition: right 0.6s ease-in-out;
+}
+
+/* Class to set right position to 0 for the transition */
+.right-0 {
+  right: 0;
+}

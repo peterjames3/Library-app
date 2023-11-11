@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library App</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Kumbh+Sans:wght@400;700&family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="relative">
+    <section class="navbar">
+      <header
+        id="nav"
+        class="fixed z-100 mx-auto flex flex-shrink-0 items-center justify-evenly sm:justify-between w-full bg-gray-500 py-3 px-2 sm:px-20 border-b-2 border-black shadow-lg shadow-zinc-900"
+      >
+        <nav
+          id="logo"
+          class="text-black text-sm sm:text-xl hover:cursor-pointer transition-all delay-300 hover:text-yellow-600 whitespace-nowrap"
+        >
+          Personal Library
+        </nav>
+        <nav class="text-center text-black space-y-2">
+          <div class="flex gap-6">
+            <span
+              ><svg
+                id="light-mode"
+                class="hoverable hover:cursor-pointer transition-all delay-300"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+              >
+                <path
+                  fill="#FFF"
+                  fill-rule="evenodd"
+                  d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.415 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 011.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1 0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010 1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.414-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"
+                />
+              </svg>
+            </span>
+            <span
+              ><svg
+                id="dark-mode"
+                class="hoverable hover:cursor-pointer transition-all delay-300"
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+              >
+                <path
+                  fill="#FFF"
+                  fill-rule="evenodd"
+                  d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"
+                /></svg
+            ></span>
+          </div>
+        </nav>
+        <nav>
+          <button
+            id="openModal"
+            class="rounded w-[7rem]sm:w-[10rem] px-5 py-2 font-medium font-fontFamily text-sm sm:text-xl hover:cursor-pointer hover:text-white hover:bg-purple-900 transition-all delay-300 bg-purple-600 text-black"
+          >
+            Add Book
+          </button>
+        </nav>
+      </header>
+    </section>
+    <section class="hero-section">
+      <div
+        class="flex flex-col-reverse sm:flex-row flex-shrink-0 gap-5 pt-10 h-screen"
+      >
+        <div
+          id="book-list"
+          class="pt-10 px-3 font-medium grid grid-cols-1 gap-4 basis-full sm:grid-cols-3 mt-20"
+        ></div>
+        <div
+          class="grid place-content-center space-y-5 px-2 sm:px-3 basis-full sm:basis-2/5 pt-14 mt-30"
+        >
+          <h1 class="text-6xl font-fontfamily font-semibold">
+            <strong class="text-purple-900">Welcome</strong>
+            <span id="h1-toggle"> to You're Local Book Storage.</span>
+          </h1>
+          <p id="para-toggle" class="text-xl text-grey-900">
+            ...Explore our vast collection of books, periodicals, and digital
+            resources. Whether you're a student, a book enthusiast, or someone
+            seeking information.
+          </p>
+
+          <nav class="pt-5">
+            <a
+              href="#"
+              class="btn font-semibold bg-purple-600 py-2 px-4 rounded hover:bg-purple-950 hover:text-white transition-all delay-300"
+              >Join the Library</a
+            >
+          </nav>
+        </div>
+      </div>
+
+      <div
+        class="modal fixed sm:mt-[2.5rem] mt-[2rem] space-y-10 px-10 w-[70%] md:w-[40%] top-[5%] right-[-39rem] bg-black h-screen py-3 bg-opacity-70 backdrop-filter backdrop-blur-md backdrop-saturate-180 border-white rounded-md transition-all"
+      >
+        <div class="flex items-center justify-between">
+          <h1 class="font-medium text-2xl text-center text-white">New Book</h1>
+          <nav
+            class="close text-4xl text-slate-300 hover:text-yellow-500 hover:cursor-pointer"
+          >
+            &times;
+          </nav>
+        </div>
+        <p
+          id="error"
+          class="text-center text-bold opacity-0 text-orange-700 transition-opacity delay-300"
+        >
+          Can't be blank, fill all fields
+        </p>
+
+        <form
+          id="book-form"
+          class="bg-black rounded-md shadow-md py-10 px-3 space-y-9"
+        >
+          <input
+            class="rounded border-b-2 border-orange-700 bg-transparent w-full py-2 px-3 text-white font-bold leading-tight focus:outline-none focus:shadow-outline"
+            id="book-title"
+            type="text"
+            placeholder="Title"
+          />
+
+          <input
+            class="rounded border-b-2 border-orange-700 bg-transparent w-full text-white py-2 px-3 t font-bold leading-tight focus:outline-none focus:shadow-outline"
+            id="book-author"
+            type="text"
+            placeholder="Author"
+          />
+          <input
+            class="rounded border-b-2 border-orange-700 bg-transparent w-full py-2 px-3 text-white font-bold leading-tight focus:outline-none focus:shadow-outline"
+            id="book-pages"
+            type="number"
+            placeholder="Pages"
+            min="0"
+          />
+
+          <label class="md:w-2/3 block text-white font-bold">
+            <input
+              class="mr-2 leading-tight w-4 h-4 rounded"
+              type="checkbox"
+              id="read"
+            />
+            <span class="text-sm"> Read</span>
+          </label>
+
+          <div class="w-full">
+            <button
+              id="submmit-new-book"
+              class="flex-shrink-0 w-full shadow-md shadow-yellow-900 bg-yellow-900 hover:bg-yellow-600 focus:shadow-outline focus:outline-none text-sm sm:text-xl text-white font-bold py-2 px-4 rounded transition-all delay-300"
+              type="submit"
+            >
+              Add To Library
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <button
+      id="scrollToTop"
+      onclick="topFunction()"
+      class="hidden fixed bottom-4 right-4 bg-purple-600 text-back hover:text-white hover:bg-purple-950 py-2 px-4 rounded cursor-pointer z-40 transition-all delay-300"
+    >
+      Scroll to Top
+    </button>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
